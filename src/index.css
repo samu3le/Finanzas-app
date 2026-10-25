@@ -1,0 +1,99 @@
+@import 'tailwindcss';
+
+/* Theme follows the OS unless the user picks one in Ajustes (data-theme on <html>). */
+:root {
+  color-scheme: light;
+  --bg: #f4f5f7;
+  --surface: #ffffff;
+  --surface-2: #eceef2;
+  --border: #dde1e7;
+  --fg: #1d2430;
+  --muted: #5f6a7a;
+  --accent: #2e7666;
+  --accent-soft: #e2efeb;
+  --positive: #2f7a55;
+  --negative: #a8473d;
+  --warning: #9a6a1c;
+  --on-accent: #ffffff;
+  /* Chart series: fixed order, validated for CVD + contrast (dataviz validate_palette.js). Never cycle; fold extras into "Otros". */
+  --series-1: #3a6fb5;
+  --series-2: #c27d2c;
+  --series-3: #14907a;
+  --series-4: #8b5aa6;
+  --series-5: #c4553a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --bg: #1a202b;
+    --surface: #222935;
+    --surface-2: #2a3240;
+    --border: #333c4b;
+    --fg: #e4e8ee;
+    --muted: #96a0ae;
+    --accent: #6cbca7;
+    --accent-soft: #24363a;
+    --positive: #7cc49c;
+    --negative: #e08b80;
+    --warning: #d9b26a;
+    --on-accent: #12171f;
+    --series-1: #5a8bd6;
+    --series-2: #c08732;
+    --series-3: #2b9c83;
+    --series-4: #9f77c2;
+    --series-5: #d6654c;
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #1a202b;
+  --surface: #222935;
+  --surface-2: #2a3240;
+  --border: #333c4b;
+  --fg: #e4e8ee;
+  --muted: #96a0ae;
+  --accent: #6cbca7;
+  --accent-soft: #24363a;
+  --positive: #7cc49c;
+  --negative: #e08b80;
+  --warning: #d9b26a;
+  --on-accent: #12171f;
+  --series-1: #5a8bd6;
+  --series-2: #c08732;
+  --series-3: #2b9c83;
+  --series-4: #9f77c2;
+  --series-5: #d6654c;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-positive: var(--positive);
+  --color-negative: var(--negative);
+  --color-warning: var(--warning);
+  --color-on-accent: var(--on-accent);
+  --color-series-1: var(--series-1);
+  --color-series-2: var(--series-2);
+  --color-series-3: var(--series-3);
+  --color-series-4: var(--series-4);
+  --color-series-5: var(--series-5);
+}
+
+@layer base {
+  html {
+    @apply bg-bg text-fg antialiased;
+    font-feature-settings: 'tnum';
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent;
+  }
+}
